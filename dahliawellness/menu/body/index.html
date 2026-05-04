@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Body Massage — Dahlia Nail & Wellness Studio</title>
+  <meta name="description" content="Body massage tại Dahlia — Tinh dầu, đá nóng, lưu dẫn bạch huyết, massage toàn thân tại TP. Hồ Chí Minh.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold-bg: #C49432;
+      --gold-dark: #A67C20;
+      --navy: #1B2B4B;
+      --dark: #0D1520;
+      --white: #FFFFFF;
+      --gold-nav: #C9A96E;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--white); background: #fff; overflow-x: hidden; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0 48px; height: 80px; display: flex; align-items: center; justify-content: space-between; transition: all 0.4s; }
+    nav.scrolled { background: rgba(13,21,32,0.96); backdrop-filter: blur(12px); height: 64px; }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; letter-spacing: 4px; color: #fff; text-decoration: none; text-transform: uppercase; }
+    .nav-logo span { color: var(--gold-nav); }
+    .nav-links { display: flex; gap: 24px; list-style: none; align-items: center; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 10.5px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s; white-space: nowrap; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold-nav); }
+    .nav-divider { width: 1px; height: 14px; background: rgba(255,255,255,0.2); }
+    .nav-cta { background: var(--gold-nav) !important; color: var(--dark) !important; padding: 10px 22px !important; font-weight: 600 !important; }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; border: none; background: none; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: #fff; }
+
+    /* HERO */
+    .hero { position: relative; height: 100vh; min-height: 600px; display: flex; align-items: flex-end; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background-image: url('../../body.jpg'); background-size: cover; background-position: center 30%; animation: zoom 14s ease-in-out infinite alternate; }
+    @keyframes zoom { from { transform: scale(1.04); } to { transform: scale(1.10); } }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,21,32,0.9) 0%, rgba(13,21,32,0.25) 55%, rgba(13,21,32,0.06) 100%); }
+    .hero-inner { position: relative; z-index: 2; padding: 0 80px 88px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 12px; color: var(--gold-nav); font-size: 10px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 16px; }
+    .eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold-nav); display: block; }
+    .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(60px,8vw,100px); font-weight: 300; color: #fff; letter-spacing: 10px; text-transform: uppercase; line-height: 0.9; margin-bottom: 18px; }
+    .hero-sub { font-size: 16px; font-weight: 300; font-style: italic; color: rgba(255,255,255,0.55); margin-bottom: 36px; }
+    .hero-btns { display: flex; align-items: center; gap: 20px; }
+    .btn-gold { background: var(--gold-nav); color: var(--dark); padding: 14px 38px; font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; display: inline-block; transition: opacity 0.3s; }
+    .btn-gold:hover { opacity: 0.85; }
+    .btn-ghost { color: rgba(255,255,255,0.45); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; transition: color 0.3s; }
+    .btn-ghost:hover { color: rgba(255,255,255,0.9); }
+
+    /* MENU SECTION */
+    .menu-section { background: var(--gold-bg); padding: 0 80px 80px; }
+
+    /* Services grid */
+    .svc-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 64px; row-gap: 52px; padding-top: 64px; }
+    .svc-wide { grid-column: 1 / -1; }
+
+    /* Service head */
+    .svc-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+    .svc-name { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 800; letter-spacing: 1px; color: var(--white); }
+    .badge { display: inline-block; background: rgba(255,255,255,0.92); color: #2D2010; font-size: 10px; font-weight: 600; padding: 3px 11px; border-radius: 20px; white-space: nowrap; font-style: normal; }
+
+    /* Dahlia Signature special */
+    .sig-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .sig-icon { width: 28px; height: 28px; flex-shrink: 0; }
+    .sig-badge { display: inline-block; background: rgba(255,255,255,0.92); color: #2D2010; font-size: 11px; font-weight: 800; padding: 4px 14px; border-radius: 20px; letter-spacing: 1px; text-transform: uppercase; }
+
+    /* Descriptions */
+    .dv { font-size: 13.5px; font-weight: 700; color: var(--white); line-height: 1.6; margin-bottom: 5px; }
+    .de { font-size: 12.5px; font-weight: 300; color: rgba(255,255,255,0.72); line-height: 1.55; margin-bottom: 14px; }
+
+    /* Price rows */
+    .prices { display: flex; flex-direction: column; gap: 4px; }
+    .pr { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+    .pa { font-size: 14px; font-weight: 700; color: var(--white); }
+    .pt { font-size: 12px; font-style: italic; font-weight: 300; color: rgba(255,255,255,0.72); }
+    .pn { font-size: 11.5px; font-weight: 300; color: rgba(255,255,255,0.6); font-style: normal; }
+
+    /* Booking CTA */
+    .book-cta { text-align: center; padding: 48px 0 0; }
+
+    /* FOOTER */
+    .page-footer { background: var(--dark); padding: 64px 80px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; letter-spacing: 4px; color: #fff; text-decoration: none; text-transform: uppercase; display: block; margin-bottom: 6px; }
+    .footer-logo span { color: var(--gold-nav); }
+    .footer-sub { font-size: 11px; color: rgba(255,255,255,0.38); letter-spacing: 2px; text-transform: uppercase; }
+    .footer-links { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+    .fl { color: rgba(255,255,255,0.45); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; transition: color 0.3s; }
+    .fl:hover { color: var(--gold-nav); }
+    .fs { width: 1px; height: 14px; background: rgba(255,255,255,0.15); }
+
+    /* MOBILE */
+    @media (max-width: 1024px) {
+      .menu-section { padding: 0 48px 64px; }
+      .svc-grid { column-gap: 40px; row-gap: 40px; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+      .nav-links.open { display: flex; flex-direction: column; position: fixed; inset: 0; background: rgba(13,21,32,0.98); padding: 100px 40px 40px; gap: 20px; z-index: 999; }
+      .nav-divider { display: none; }
+      .hero-inner { padding: 0 24px 64px; }
+      .hero-title { font-size: 52px; }
+      .menu-section { padding: 0 24px 56px; }
+      .top-photo img { height: 280px; }
+      .svc-grid { grid-template-columns: 1fr; }
+      .svc-wide { grid-column: 1; }
+      .page-footer { padding: 48px 24px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <a href="../../" class="nav-logo">Dahlia <span>&</span> Wellness</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="../../">Trang chủ</a></li>
+    <li class="nav-divider"></li>
+    <li><a href="../nail/">Nail Services</a></li>
+    <li><a href="../facial/">Facial Care</a></li>
+    <li><a href="../body/" class="active">Body Massage</a></li>
+    <li><a href="../hair-wash/">Hair Wash</a></li>
+    <li class="nav-divider"></li>
+    <li><a href="../../#contact">Liên hệ</a></li>
+    <li><a href="https://booksalon.kiotviet.vn/Dahlia" target="_blank" class="nav-cta">Đặt lịch</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <div class="eyebrow">Body Massage</div>
+    <h1 class="hero-title">Body<br>Menu</h1>
+    <p class="hero-sub">Thư giãn toàn thân — Full body relaxation & therapy</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn-gold">Xem bảng giá</a>
+      <a href="../../" class="btn-ghost">← Trang chủ</a>
+    </div>
+  </div>
+</section>
+
+<section class="menu-section" id="menu">
+
+  <div class="svc-grid">
+
+    <!-- DAHLIA SIGNATURE -->
+    <div>
+      <div class="sig-head">
+        <svg class="sig-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="14" cy="14" r="4" fill="rgba(255,255,255,0.9)"/>
+          <g stroke="rgba(255,255,255,0.85)" stroke-width="1.5" stroke-linecap="round">
+            <line x1="14" y1="2" x2="14" y2="6"/>
+            <line x1="14" y1="22" x2="14" y2="26"/>
+            <line x1="2" y1="14" x2="6" y2="14"/>
+            <line x1="22" y1="14" x2="26" y2="14"/>
+            <line x1="5.5" y1="5.5" x2="8.4" y2="8.4"/>
+            <line x1="19.6" y1="19.6" x2="22.5" y2="22.5"/>
+            <line x1="22.5" y1="5.5" x2="19.6" y2="8.4"/>
+            <line x1="8.4" y1="19.6" x2="5.5" y2="22.5"/>
+          </g>
+        </svg>
+        <span class="sig-badge">Dahlia Signature</span>
+      </div>
+      <p class="dv">Thư giãn toàn bộ cơ thể, tận hưởng sự tĩnh lặng của tâm trí với sự kết hợp độc đáo của tinh dầu, đá nóng và ấn huyệt.</p>
+      <p class="de">Rejuvenate your body and mind with a unique combination of aromatic oils, hot stones, and focused pressing techniques.</p>
+      <div class="prices">
+        <div class="pr"><span class="pa">1.050.000đ</span><span class="pt">90 phút/mins</span></div>
+      </div>
+    </div>
+
+    <!-- TINH DẦU -->
+    <div>
+      <div class="svc-head">
+        <span class="svc-name">Tinh dầu</span>
+        <span class="badge">Aromatic oil</span>
+      </div>
+      <p class="dv">Thư giãn, giảm stress, tăng cường lưu thông máu cùng liệu pháp mùi hương</p>
+      <p class="de">De-stressing your mind, releasing body tension with your choice of aromas</p>
+      <div class="prices">
+        <div class="pr"><span class="pa">575.000đ</span><span class="pt">60 phút/mins</span></div>
+        <div class="pr"><span class="pa">725.000đ</span><span class="pt">90 phút/mins</span></div>
+      </div>
+    </div>
+
+    <!-- ĐÁ NÓNG -->
+    <div>
+      <div class="svc-head">
+        <span class="svc-name">Đá nóng</span>
+        <span class="badge">Hot Stone</span>
+      </div>
+      <p class="dv">Hơi nóng từ đá núi lửa, cùng các thao tác khéo léo của KTV giúp bạn giải phóng cơ căng, giảm đau nhức và cải thiện giấc ngủ.</p>
+      <p class="de">Melt away the strain and muscle aches, improve your sleep with the skilled massage technique combined with the soothing heat from basalt stones</p>
+      <div class="prices">
+        <div class="pr"><span class="pa">610.000đ</span><span class="pt">60 phút/mins</span></div>
+        <div class="pr"><span class="pa">780.000đ</span><span class="pt">90 phút/mins</span></div>
+      </div>
+    </div>
+
+    <!-- LƯU DẪN HỆ BẠCH HUYẾT -->
+    <div>
+      <div class="svc-head">
+        <span class="svc-name">Lưu dẫn hệ bạch huyết</span>
+        <span class="badge">Lymphatic detox</span>
+      </div>
+      <p class="dv">Cảm nhận cơ thể nhẹ bằng, giảm ứ động dịch và sắc diện rạng rỡ từ kỹ thuật lưu dẫn bạch huyết.</p>
+      <p class="de">Using light, rhythmic strokes, the therapy stimulates lymphatic flow, helps to remove toxins and waste from the body while boosting immune function.</p>
+      <div class="prices">
+        <div class="pr"><span class="pa">1.000.000đ</span><span class="pt">60 phút/mins</span></div>
+        <div class="pr"><span class="pa">1.290.000đ</span><span class="pt">100 phút/mins</span><span class="pn">(kèm chải khô/ dry brushing)</span></div>
+      </div>
+    </div>
+
+    <!-- CỔ. VAI. GÁY -->
+    <div>
+      <div class="svc-head">
+        <span class="svc-name">Cổ. Vai. Gáy</span>
+        <span class="badge">The Office Trio</span>
+      </div>
+      <p class="dv">Xoa bóp kết hợp đắp mặt nạ gừng làm dịu cơn nhức mỏi kinh niên của đời sống hiện đại, cải thiện tình trạng nặng đầu & khó ngủ.</p>
+      <p class="de">A stimulating deep tissue massage targeting the upper body, combined with a ginger mask, to ease pain, reduce fatigue, and improve sleep quality.</p>
+      <div class="prices">
+        <div class="pr"><span class="pa">450.000đ</span><span class="pt">45 phút/mins</span></div>
+        <div class="pr"><span class="pa">550.000đ</span><span class="pt">60 phút/mins</span></div>
+      </div>
+    </div>
+
+    <!-- THƯ GIÃN ĐÔI CHÂN -->
+    <div>
+      <div class="svc-head">
+        <span class="svc-name">Thư giãn đôi chân</span>
+        <span class="badge">Foot Reflexology</span>
+      </div>
+      <p class="dv">Chăm sóc "trái tim thứ hai" với liệu pháp ấn huyệt, xoa bóp; không chỉ giảm nhức mỏi bắp chân, bàn chân mà còn tái tạo năng lượng từ bên trong.</p>
+      <p class="de">The foot is known as the second heart. With a regular rubdown, it can relax tight muscles, stimulate blood circulation, and also improve overall health</p>
+      <div class="prices">
+        <div class="pr"><span class="pa">380.000đ</span><span class="pt">30 phút/mins</span></div>
+        <div class="pr"><span class="pa">500.000đ</span><span class="pt">60 phút/mins</span><span class="pn">(kèm đá nóng / with hot stones)</span></div>
+      </div>
+    </div>
+
+    <!-- MẸ BẦU VUI KHOẺ — wide -->
+    <div class="svc-wide">
+      <div class="svc-head">
+        <span class="svc-name">Mẹ bầu vui khoẻ</span>
+        <span class="badge">Mom-to-be</span>
+      </div>
+      <p class="dv">Sử dụng dầu hạt nho/dầu hạnh nhân (ít mùi, hạn chế kích ứng), giúp mẹ dịu nhức mỏi, ngừa rạn da, sẵn sàng đón niềm vui thiên chức.</p>
+      <p class="de">Moms-to-be, indulge in a moment of tranquility while preventing stretch marks and easing muscle tension with our prenatal massage featuring grapeseed oil/almond oil</p>
+      <div class="prices">
+        <div class="pr"><span class="pa">620.000đ</span><span class="pt">70 phút/mins</span></div>
+        <div class="pr"><span class="pa">780.000đ</span><span class="pt">90 phút/mins</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="book-cta">
+    <a href="https://booksalon.kiotviet.vn/Dahlia" target="_blank" class="btn-gold">Đặt lịch ngay →</a>
+  </div>
+
+</section>
+
+<footer class="page-footer">
+  <div>
+    <a href="../../" class="footer-logo"><span>Dahlia</span> Nail &amp; Wellness</a>
+    <p class="footer-sub">TP. Hồ Chí Minh, Việt Nam</p>
+  </div>
+  <div class="footer-links">
+    <a href="../nail/" class="fl">Nail</a><span class="fs"></span>
+    <a href="../facial/" class="fl">Facial</a><span class="fs"></span>
+    <a href="../body/" class="fl">Body</a><span class="fs"></span>
+    <a href="../hair-wash/" class="fl">Hair Wash</a><span class="fs"></span>
+    <a href="https://booksalon.kiotviet.vn/Dahlia" target="_blank" class="btn-gold" style="font-size:10px;padding:10px 20px;letter-spacing:2px;">Đặt lịch</a>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+  document.querySelector('a[href="#menu"]').addEventListener('click', e => {
+    e.preventDefault();
+    document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+  });
+</script>
+</body>
+</html>
