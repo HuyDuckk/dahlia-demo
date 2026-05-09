@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dahlia Nail & Wellness Studio — a place of me time</title>
-  <meta name="description" content="Dahlia Nail & Wellness Studio — không gian chăm sóc bản thân tại TP. Hồ Chí Minh. Nail, Facial Care, Body Massage, Hair Wash.">
+  <meta name="description" content="Dahlia — boutique spa Phú Mỹ Hưng, nail cao cấp & chăm da quận 7. Nail art, Facial Care, Body Massage, Hair Wash trong không gian wellness đẳng cấp tại TP. Hồ Chí Minh.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -33,15 +33,28 @@
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0 48px; height: 80px; display: flex; align-items: center; justify-content: space-between; transition: all 0.4s ease; }
     nav.scrolled { background: rgba(13,21,32,0.96); backdrop-filter: blur(12px); height: 64px; box-shadow: 0 1px 0 rgba(255,255,255,0.06); }
     .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; letter-spacing: 4px; color: var(--white); text-decoration: none; text-transform: uppercase; }
+    
+    .nav-logo-img { height: 56px; width: auto; display: block; object-fit: contain; }
     .nav-logo span { color: var(--gold); }
     .nav-links { display: flex; gap: 24px; list-style: none; align-items: center; }
-    .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 10.5px; font-weight: 500; letter-spacing: 1.8px; text-transform: uppercase; transition: color 0.3s; white-space: nowrap; }
+    .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 10.5px; font-weight: 500; letter-spacing: 1.8px; text-transform: uppercase; transition: color 0.3s; white-space: nowrap; position: relative; padding-bottom: 3px; }
+    .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s ease; }
     .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { width: 100%; }
     .nav-divider { width: 1px; height: 18px; background: rgba(255,255,255,0.15); flex-shrink: 0; }
-    .nav-cta { background: var(--gold) !important; color: var(--dark) !important; padding: 10px 24px !important; font-weight: 600 !important; transition: opacity 0.3s !important; }
-    .nav-cta:hover { opacity: 0.85 !important; }
-    .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-    .nav-toggle span { display: block; width: 24px; height: 2px; background: white; transition: all 0.3s; }
+    .nav-cta { background: var(--gold) !important; color: var(--dark) !important; padding: 10px 24px !important; font-weight: 600 !important; transition: all 0.3s !important; }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(201,169,110,0.35) !important; }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; border-radius: 4px; transition: background 0.2s; }
+    .nav-toggle:hover { background: rgba(255,255,255,0.08); }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: white; transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1); transform-origin: center; }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* MOBILE NAV OVERLAY */
+    .nav-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.72); backdrop-filter: blur(4px); z-index: 998; opacity: 0; transition: opacity 0.3s; }
+    .nav-backdrop.open { display: block; opacity: 1; }
 
     /* HERO */
     .hero { position: relative; height: 100vh; min-height: 680px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
@@ -53,7 +66,8 @@
     .hero-eyebrow::before, .hero-eyebrow::after { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); }
     .hero-title { font-size: clamp(72px, 11vw, 120px); font-weight: 300; color: var(--white); letter-spacing: 14px; text-transform: uppercase; line-height: 1; margin-bottom: 12px; opacity: 0; animation: fadeUp 1s 0.6s forwards; }
     .hero-subtitle { font-size: clamp(14px, 2vw, 20px); font-weight: 300; color: rgba(255,255,255,0.65); letter-spacing: 5px; text-transform: uppercase; margin-bottom: 16px; opacity: 0; animation: fadeUp 1s 0.75s forwards; }
-    .hero-tagline { font-size: clamp(22px, 3vw, 34px); font-weight: 300; font-style: italic; color: var(--gold-light); margin-bottom: 56px; opacity: 0; animation: fadeUp 1s 0.9s forwards; }
+    .hero-logo { width: clamp(180px, 28vw, 280px); height: auto; display: block; margin: 0 auto 24px; opacity: 0; animation: fadeUp 1s 0.6s forwards; }
+    .hero-tagline { font-size: clamp(18px, 2.5vw, 28px); font-weight: 300; font-style: italic; color: var(--gold-light); margin-bottom: 56px; opacity: 0; animation: fadeUp 1s 0.9s forwards; }
     .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; opacity: 0; animation: fadeUp 1s 1.1s forwards; }
     .btn-primary { background: var(--gold); color: var(--dark); padding: 16px 44px; font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; border: 2px solid var(--gold); display: inline-block; transition: all 0.3s; }
     .btn-primary:hover { background: transparent; color: var(--gold); }
@@ -172,6 +186,7 @@
     .footer-inner { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 56px; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 32px; }
     .footer-logo { font-family:'Cormorant Garamond',serif; font-size: 24px; font-weight: 600; letter-spacing: 5px; text-transform: uppercase; color: var(--white); display: block; margin-bottom: 8px; }
     .footer-logo span { color: var(--gold); }
+    .footer-logo-img { height: 72px; width: auto; display: block; object-fit: contain; margin-bottom: 8px; }
     .footer-tagline { font-family:'Cormorant Garamond',serif; font-size: 14px; font-style: italic; color: rgba(255,255,255,0.35); margin-bottom: 28px; }
     .footer-social { display: flex; gap: 10px; }
     .social-link { width: 38px; height: 38px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.55); text-decoration: none; transition: all 0.3s; }
@@ -208,11 +223,24 @@
       section { padding: 72px 0; }
       .container { padding: 0 20px; }
       nav { padding: 0 20px; }
-      .nav-links { display: none; }
+      .nav-links { display: flex; flex-direction: column; position: fixed; top: 0; right: 0; bottom: 0; width: min(320px, 85vw); background: var(--dark); padding: 88px 40px 48px; gap: 0; z-index: 999; transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1); box-shadow: -8px 0 40px rgba(0,0,0,0.4); overflow-y: auto; -webkit-overflow-scrolling: touch; }
       .nav-toggle { display: flex; }
-      .nav-links.open { display: flex; flex-direction: column; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--dark); align-items: center; justify-content: center; gap: 28px; z-index: 999; }
-      .nav-links.open a { font-size: 20px; letter-spacing: 4px; }
-      .nav-links.open .nav-divider { display: none; }
+      .nav-links li { opacity: 0; transform: translateX(20px); transition: opacity 0.3s, transform 0.3s; }
+      .nav-links li:nth-child(1) { transition-delay: 0.05s; }
+      .nav-links li:nth-child(2) { transition-delay: 0.08s; }
+      .nav-links li:nth-child(3) { transition-delay: 0.11s; }
+      .nav-links li:nth-child(4) { transition-delay: 0.14s; }
+      .nav-links li:nth-child(5) { transition-delay: 0.17s; }
+      .nav-links li:nth-child(6) { transition-delay: 0.20s; }
+      .nav-links li:nth-child(7) { transition-delay: 0.23s; }
+      .nav-links li:nth-child(8) { transition-delay: 0.26s; }
+      .nav-links.open { transform: translateX(0); }
+      .nav-links.open li { opacity: 1; transform: translateX(0); }
+      .nav-links a { font-size: 15px; letter-spacing: 2.5px; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.06); display: block; width: 100%; }
+      .nav-links a::after { display: none; }
+      .nav-links a:active { color: var(--gold); background: rgba(201,169,110,0.06); margin: 0 -40px; padding-left: 40px; padding-right: 40px; }
+      .nav-links .nav-divider { display: none; }
+      .nav-links .nav-cta { margin-top: 24px; text-align: center; padding: 16px 24px !important; display: block; }
       .services-grid { grid-template-columns: 1fr; }
       .service-card-img { height: 320px; }
       .gallery-grid { grid-template-columns: 1fr 1fr; }
@@ -228,14 +256,14 @@
 <body>
 
 <nav id="navbar">
-  <a href="#" class="nav-logo">Dahlia<span>.</span></a>
+  <a href="#" class="nav-logo"><img src="logo.png" alt="Dahlia Nail & Wellness Studio" class="nav-logo-img"></a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#">Trang chủ</a></li>
     <li class="nav-divider" aria-hidden="true"></li>
-    <li><a href="menu/nail/">Nail Services</a></li>
-    <li><a href="menu/facial/">Facial Care</a></li>
-    <li><a href="menu/body/">Body Massage</a></li>
-    <li><a href="menu/hair-wash/">Hair Wash</a></li>
+    <li><a href="menu/nail-cao-cap-phu-my-hung/">Nail Services</a></li>
+    <li><a href="menu/cham-da-quan-7/">Facial Care</a></li>
+    <li><a href="menu/spa-cao-cap-quan7/">Body Massage</a></li>
+    <li><a href="menu/goi-dau-duong-sinh-quan7/">Hair Wash</a></li>
     <li class="nav-divider" aria-hidden="true"></li>
     <li><a href="#contact">Liên hệ</a></li>
     <li><a href="https://booksalon.kiotviet.vn/Dahlia" target="_blank" class="nav-cta">Đặt lịch</a></li>
@@ -244,15 +272,15 @@
     <span></span><span></span><span></span>
   </div>
 </nav>
+<div class="nav-backdrop" id="navBackdrop"></div>
 
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow">Ho Chi Minh City</div>
-    <h1 class="hero-title">Dahlia</h1>
-    <p class="hero-subtitle">Nail &amp; Wellness Studio</p>
-    <p class="hero-tagline">a place of me time.</p>
+    <div class="hero-eyebrow">a place of me time</div>
+    <img src="logo.png" alt="Dahlia Nail & Wellness Studio" class="hero-logo">
+    <p class="hero-tagline">Nơi chốn yêu mình của Nàng</p>
     <div class="hero-actions">
       <a href="#services" class="btn-primary">Khám phá dịch vụ</a>
       <a href="https://booksalon.kiotviet.vn/Dahlia" target="_blank" class="btn-outline">Đặt lịch ngay</a>
@@ -289,14 +317,16 @@
     <div class="about-content">
       <div class="section-label">Về Dahlia</div>
       <h2 class="about-heading">
-        you gotta nourish<br>
-        <em>to flourish</em>
+        <em>a place of me time</em>
       </h2>
       <p class="about-text">
-        Dahlia Nail &amp; Wellness Studio là không gian chăm sóc bản thân được thiết kế để mang đến cho bạn những khoảnh khắc thư giãn trọn vẹn. Tại đây, chúng tôi kết hợp kỹ thuật chăm sóc chuyên nghiệp với không gian ấm cúng, nghệ thuật để tạo ra một trải nghiệm wellness đích thực.
+        Dahlia Nail &amp; Wellness Studio là một <strong>boutique spa tại Phú Mỹ Hưng</strong>, được khởi đầu bằng ý niệm về một nơi chốn dành cho <em>me time</em>.
       </p>
       <p class="about-text">
-        Mỗi liệu trình đều được lắng nghe và thiết kế riêng biệt theo nhu cầu của bạn. Từ massage thư giãn, chăm sóc da mặt, hair wash đến nail art — tất cả đều được thực hiện bởi đội ngũ kỹ thuật viên tận tâm và giàu kinh nghiệm.
+        Tại Dahlia, mọi dịch vụ đều được thiết kế vừa đủ và có chọn lọc — từ <strong>nail cao cấp</strong>, <strong>chăm da khoa học</strong>, đến <strong>gội đầu dưỡng sinh head spa</strong>. Không chỉ để làm đẹp, mà còn để bạn có một khoảng thời gian thật sự dành cho bản thân: lắng lại, thả lỏng và cân bằng hơn sau những nhịp sống thường ngày.
+      </p>
+      <p class="about-text">
+        Một không gian xanh lành, đội ngũ tỉ mỉ và những sản phẩm được tinh chọn — tất cả đều vừa vặn cho <em>me time</em> của nàng.
       </p>
     </div>
   </div>
@@ -306,8 +336,8 @@
   <div class="container">
     <div class="services-header reveal">
       <div class="section-label">Dịch vụ</div>
-      <h2 class="services-title">Trải nghiệm toàn diện</h2>
-      <p class="services-desc">Bốn thế giới chăm sóc, một không gian dành riêng cho bạn.</p>
+      <h2 class="services-title">Trải nghiệm spa đánh thức các giác quan</h2>
+      <p class="services-desc">Đa dạng dịch vụ, trong một không gian dành riêng cho bạn.</p>
     </div>
     <div class="services-grid">
 
@@ -321,8 +351,8 @@
           </div>
         </div>
         <div class="service-card-body">
-          <p class="service-description">Xả bỏ căng thẳng với liệu trình massage toàn thân chuyên sâu. Kỹ thuật viên lành nghề kết hợp các phương pháp massage truyền thống và hiện đại, giải phóng căng cơ và phục hồi cân bằng tự nhiên cho cơ thể.</p>
-          <a href="menu/body/" class="service-link">Xem menu đầy đủ &nbsp;→</a>
+          <p class="service-description">Từ đá nóng, cổ vai gáy đến foot reflexology, các liệu pháp thư giãn tại Dahlia giúp làm dịu vùng cơ căng mỏi, thả lỏng tâm trí trong không gian spa xanh lành, lịch sự.</p>
+          <a href="menu/spa-cao-cap-quan7/" class="service-link">Xem menu đầy đủ &nbsp;→</a>
         </div>
       </div>
 
@@ -336,8 +366,8 @@
           </div>
         </div>
         <div class="service-card-body">
-          <p class="service-description">Khám phá vẻ đẹp tự nhiên của làn da với các liệu trình facial độc quyền. Từ làm sạch sâu, trị liệu chống lão hóa đến liệu pháp dưỡng sáng — mỗi treatment được cá nhân hóa theo nhu cầu da của bạn.</p>
-          <a href="menu/facial/" class="service-link">Xem menu đầy đủ &nbsp;→</a>
+          <p class="service-description">Tìm kiếm trải nghiệm chăm da chuẩn khoa học, sử dụng dược mỹ phẩm tại Phú Mỹ Hưng? Các liệu trình facial tại Dahlia được cá nhân hoá theo tình trạng da thực tế — từ detox da, kiểm soát mụn đến phục hồi và trẻ hoá da đúng cách.</p>
+          <a href="menu/cham-da-quan-7/" class="service-link">Xem menu đầy đủ &nbsp;→</a>
         </div>
       </div>
 
@@ -351,8 +381,8 @@
           </div>
         </div>
         <div class="service-card-body">
-          <p class="service-description">Trải nghiệm liệu trình gội đầu đẳng cấp với sản phẩm chuyên nghiệp Davines. Nuôi dưỡng da đầu, tăng cường sức mạnh tóc và tìm lại sự cân bằng từ gốc đến ngọn, mang lại cảm giác thư thái tuyệt vời.</p>
-          <a href="menu/hair-wash/" class="service-link">Xem menu đầy đủ &nbsp;→</a>
+          <p class="service-description">Trải nghiệm gội đầu dưỡng sinh tại Dahlia với sản phẩm chuyên nghiệp Davines, kết hợp chăm sóc da đầu và thư giãn cổ vai gáy. Liệu trình giúp làm sạch da đầu, nuôi dưỡng mái tóc từ gốc và mang lại cảm giác thư thái.</p>
+          <a href="menu/goi-dau-duong-sinh-quan7/" class="service-link">Xem menu đầy đủ &nbsp;→</a>
         </div>
       </div>
 
@@ -366,8 +396,8 @@
           </div>
         </div>
         <div class="service-card-body">
-          <p class="service-description">Chăm sóc đôi tay và đôi chân với dịch vụ nail chuyên nghiệp trong không gian thư thái. Từ manicure/pedicure classic đến nail art sáng tạo — mỗi đường nét đều được thực hiện với sự tỉ mỉ và tinh tế.</p>
-          <a href="menu/nail/" class="service-link">Xem menu đầy đủ &nbsp;→</a>
+          <p class="service-description">Trải nghiệm nail cao cấp trong không gian thư thái, không xô bồ. Từ manicure, pedicure, gel thuần chay đến GelX và BIAB — đa dạng lựa chọn làm móng bền đẹp, tự nhiên và tinh tế.</p>
+          <a href="menu/nail-cao-cap-phu-my-hung/" class="service-link">Xem menu đầy đủ &nbsp;→</a>
         </div>
       </div>
 
@@ -381,18 +411,18 @@
       <div class="experience-content reveal">
         <div class="section-label" style="color:var(--gold)">Vì sao chọn Dahlia</div>
         <h2 class="experience-heading">
-          Không gian dành riêng<br>
-          <em>cho khoảnh khắc của bạn</em>
+          Không gian riêng dành<br>
+          <em>cho khoảnh khắc "yêu mình"</em>
         </h2>
         <p class="experience-text">
-          Tại Dahlia, chúng tôi tin rằng việc chăm sóc bản thân không chỉ là một dịch vụ — đó là một nghi thức. Mỗi chi tiết trong không gian, từng sản phẩm được chọn lọc và từng kỹ thuật viên đều hướng đến một mục tiêu: mang lại sự an yên trọn vẹn.
+          Tại Dahlia, chúng tôi tin rằng việc làm đẹp không chỉ là một dịch vụ — đó là một nghi thức chăm sóc bản thân. Mỗi chi tiết trong không gian, từng sản phẩm được chọn lọc và từng kỹ thuật viên đều hướng đến một mục tiêu: mang lại khoảng khắc me-time trọn vẹn.
         </p>
         <div class="experience-features">
           <div class="feature-item reveal reveal-delay-1">
             <div class="feature-icon">✦</div>
             <div class="feature-text">
               <h4>Sản phẩm cao cấp</h4>
-              <p>Đối tác với Davines và các thương hiệu chuyên nghiệp hàng đầu thế giới</p>
+              <p>Đồng hành cùng các thương hiệu chuyên nghiệp hàng đầu (Davines, No3, Germaine de Capuccini, Christina, The Gel Bottle, Canni…)</p>
             </div>
           </div>
           <div class="feature-item reveal reveal-delay-2">
@@ -459,7 +489,7 @@
       <div>
         <div class="section-label reveal">Liên hệ</div>
         <h2 class="contact-heading reveal">Đặt lịch trải nghiệm<br>cùng Dahlia</h2>
-        <p class="contact-text reveal">Hãy để chúng tôi chăm sóc bạn. Đặt lịch trước để đảm bảo không gian và kỹ thuật viên phù hợp nhất dành riêng cho bạn.</p>
+        <p class="contact-text reveal">Hãy để boutique spa Phú Mỹ Hưng của chúng tôi chăm sóc bạn. Đặt lịch trước để đảm bảo không gian và kỹ thuật viên nail cao cấp phù hợp nhất dành riêng cho bạn.</p>
         <div class="contact-details">
           <div class="contact-item reveal">
             <div class="contact-icon">
@@ -542,7 +572,7 @@
   <div class="container">
     <div class="footer-inner">
       <div>
-        <span class="footer-logo">Dahlia<span>.</span></span>
+        <img src="logo.png" alt="Dahlia Nail & Wellness Studio" class="footer-logo-img">
         <p class="footer-tagline">a place of me time.</p>
         <div class="footer-social">
           <a href="https://www.facebook.com/dahlia.nail.wellness/" class="social-link" target="_blank" aria-label="Facebook">
@@ -559,10 +589,10 @@
       <div class="footer-col">
         <h5>Dịch vụ</h5>
         <ul class="footer-nav">
-          <li><a href="menu/body/">Body Massage</a></li>
-          <li><a href="menu/facial/">Facial Care</a></li>
-          <li><a href="menu/hair-wash/">Hair Wash</a></li>
-          <li><a href="menu/nail/">Nail Services</a></li>
+          <li><a href="menu/spa-cao-cap-quan7/">Body Massage</a></li>
+          <li><a href="menu/cham-da-quan-7/">Facial Care</a></li>
+          <li><a href="menu/goi-dau-duong-sinh-quan7/">Hair Wash</a></li>
+          <li><a href="menu/nail-cao-cap-phu-my-hung/">Nail Services</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -595,8 +625,31 @@
 
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
-  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+  const navBackdrop = document.getElementById('navBackdrop');
+  let _scrollY = 0;
+
+  function openMenu() {
+    _scrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${_scrollY}px`;
+    document.body.style.width = '100%';
+    navLinks.classList.add('open');
+    navToggle.classList.add('open');
+    navBackdrop.classList.add('open');
+  }
+  function closeMenu() {
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    window.scrollTo(0, _scrollY);
+    navLinks.classList.remove('open');
+    navToggle.classList.remove('open');
+    navBackdrop.classList.remove('open');
+  }
+  navToggle.addEventListener('click', () => navLinks.classList.contains('open') ? closeMenu() : openMenu());
+  navBackdrop.addEventListener('click', closeMenu);
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 
   const observer = new IntersectionObserver(
     entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),

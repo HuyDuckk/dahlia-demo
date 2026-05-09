@@ -19,20 +19,33 @@
       --gold-nav: #C9A96E;
     }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; color: var(--white); background: #fff; overflow-x: hidden; }
+    @keyframes pageIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+    body { font-family: 'Inter', sans-serif; color: var(--white); background: #fff; overflow-x: hidden; animation: pageIn 0.7s cubic-bezier(0.22,1,0.36,1) both; }
 
     /* NAV */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0 48px; height: 80px; display: flex; align-items: center; justify-content: space-between; transition: all 0.4s; }
     nav.scrolled { background: rgba(13,21,32,0.96); backdrop-filter: blur(12px); height: 64px; }
     .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; letter-spacing: 4px; color: #fff; text-decoration: none; text-transform: uppercase; }
+    
+    .nav-logo-img { height: 56px; width: auto; display: block; object-fit: contain; }
     .nav-logo span { color: var(--gold-nav); }
     .nav-links { display: flex; gap: 24px; list-style: none; align-items: center; }
-    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 10.5px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s; white-space: nowrap; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 10.5px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s; white-space: nowrap; position: relative; padding-bottom: 3px; }
+    .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--gold-nav); transition: width 0.3s ease; }
+    .nav-links a:hover::after { width: 100%; }
     .nav-links a:hover, .nav-links a.active { color: var(--gold-nav); }
     .nav-divider { width: 1px; height: 14px; background: rgba(255,255,255,0.2); }
-    .nav-cta { background: var(--gold-nav) !important; color: var(--dark) !important; padding: 10px 22px !important; font-weight: 600 !important; }
-    .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; border: none; background: none; }
-    .nav-toggle span { display: block; width: 24px; height: 2px; background: #fff; }
+    .nav-cta { background: var(--gold-nav) !important; color: var(--dark) !important; padding: 10px 22px !important; font-weight: 600 !important; transition: all 0.3s !important; }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { opacity: 0.88 !important; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(201,169,110,0.3) !important; }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; border: none; background: none; padding: 6px; border-radius: 4px; transition: background 0.2s; }
+    .nav-toggle:hover { background: rgba(255,255,255,0.08); }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: #fff; transition: all 0.35s cubic-bezier(0.23,1,0.32,1); transform-origin: center; }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); z-index: 998; opacity: 0; transition: opacity 0.3s; }
+    .nav-backdrop.open { display: block; opacity: 1; }
 
     /* HERO */
     .hero { position: relative; height: 100vh; min-height: 600px; display: flex; align-items: flex-end; overflow: hidden; }
@@ -45,8 +58,8 @@
     .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(60px,8vw,100px); font-weight: 300; color: #fff; letter-spacing: 10px; text-transform: uppercase; line-height: 0.9; margin-bottom: 18px; }
     .hero-sub { font-size: 16px; font-weight: 300; font-style: italic; color: rgba(255,255,255,0.55); margin-bottom: 36px; }
     .hero-btns { display: flex; align-items: center; gap: 20px; }
-    .btn-gold { background: var(--gold-nav); color: var(--dark); padding: 14px 38px; font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; display: inline-block; transition: opacity 0.3s; }
-    .btn-gold:hover { opacity: 0.85; }
+    .btn-gold { background: var(--gold-nav); color: var(--dark); padding: 14px 38px; font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; display: inline-block; transition: all 0.3s; }
+    .btn-gold:hover { opacity: 0.9; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(201,169,110,0.35); }
     .btn-ghost { color: rgba(255,255,255,0.45); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; transition: color 0.3s; }
     .btn-ghost:hover { color: rgba(255,255,255,0.9); }
 
@@ -98,9 +111,23 @@
     }
     @media (max-width: 768px) {
       nav { padding: 0 24px; }
-      .nav-links { display: none; }
+      .nav-links { display: flex; flex-direction: column; position: fixed; top: 0; right: 0; bottom: 0; width: min(320px, 85vw); background: var(--dark); padding: 88px 40px 48px; gap: 0; z-index: 999; transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.23,1,0.32,1); box-shadow: -8px 0 40px rgba(0,0,0,0.4); }
       .nav-toggle { display: flex; }
-      .nav-links.open { display: flex; flex-direction: column; position: fixed; inset: 0; background: rgba(13,21,32,0.98); padding: 100px 40px 40px; gap: 20px; z-index: 999; }
+      .nav-links li { opacity: 0; transform: translateX(20px); transition: opacity 0.3s, transform 0.3s; }
+      .nav-links li:nth-child(1) { transition-delay: 0.05s; }
+      .nav-links li:nth-child(2) { transition-delay: 0.08s; }
+      .nav-links li:nth-child(3) { transition-delay: 0.11s; }
+      .nav-links li:nth-child(4) { transition-delay: 0.14s; }
+      .nav-links li:nth-child(5) { transition-delay: 0.17s; }
+      .nav-links li:nth-child(6) { transition-delay: 0.20s; }
+      .nav-links li:nth-child(7) { transition-delay: 0.23s; }
+      .nav-links li:nth-child(8) { transition-delay: 0.26s; }
+      .nav-links.open { transform: translateX(0); }
+      .nav-links.open li { opacity: 1; transform: translateX(0); }
+      .nav-links a { font-size: 15px; letter-spacing: 2.5px; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.06); display: block; width: 100%; }
+      .nav-links a::after { display: none; }
+      .nav-links .nav-divider { display: none; }
+      .nav-links .nav-cta { margin-top: 24px; text-align: center; padding: 16px 24px !important; display: block; }
       .nav-divider { display: none; }
       .hero-inner { padding: 0 24px 64px; }
       .hero-title { font-size: 52px; }
@@ -115,14 +142,14 @@
 <body>
 
 <nav id="mainNav">
-  <a href="../../" class="nav-logo">Dahlia <span>&</span> Wellness</a>
+  <a href="../../" class="nav-logo"><img src="../../logo.png" alt="Dahlia Nail & Wellness Studio" class="nav-logo-img"></a>
   <ul class="nav-links" id="navLinks">
     <li><a href="../../">Trang chủ</a></li>
     <li class="nav-divider"></li>
-    <li><a href="../nail/">Nail Services</a></li>
-    <li><a href="../facial/">Facial Care</a></li>
-    <li><a href="../body/" class="active">Body Massage</a></li>
-    <li><a href="../hair-wash/">Hair Wash</a></li>
+    <li><a href="../nail-cao-cap-phu-my-hung/">Nail Services</a></li>
+    <li><a href="../cham-da-quan-7/">Facial Care</a></li>
+    <li><a href="../spa-cao-cap-quan7/" class="active">Body Massage</a></li>
+    <li><a href="../goi-dau-duong-sinh-quan7/">Hair Wash</a></li>
     <li class="nav-divider"></li>
     <li><a href="../../#contact">Liên hệ</a></li>
     <li><a href="https://booksalon.kiotviet.vn/Dahlia" target="_blank" class="nav-cta">Đặt lịch</a></li>
@@ -136,7 +163,7 @@
   <div class="hero-inner">
     <div class="eyebrow">Body Massage</div>
     <h1 class="hero-title">Body<br>Menu</h1>
-    <p class="hero-sub">Thư giãn toàn thân — Full body relaxation & therapy</p>
+    <p class="hero-sub">Tọa lạc tại khu Phú Mỹ Hưng, (Quận 7) Dahlia mang đến các liệu pháp thư giãn tập trung vào cảm giác thả lỏng cơ thể và tâm trí trong một không gian spa xanh lành, lịch sự. Từ đá nóng, cổ vai gáy đến foot reflexology, mỗi liệu trình được thực hiện tỉ mỉ để làm dịu vùng cơ căng mỏi và đưa cơ thể về trạng thái cân bằng hơn.</p>
     <div class="hero-btns">
       <a href="#menu" class="btn-gold">Xem bảng giá</a>
       <a href="../../" class="btn-ghost">← Trang chủ</a>
@@ -271,10 +298,10 @@
     <p class="footer-sub">TP. Hồ Chí Minh, Việt Nam</p>
   </div>
   <div class="footer-links">
-    <a href="../nail/" class="fl">Nail</a><span class="fs"></span>
-    <a href="../facial/" class="fl">Facial</a><span class="fs"></span>
-    <a href="../body/" class="fl">Body</a><span class="fs"></span>
-    <a href="../hair-wash/" class="fl">Hair Wash</a><span class="fs"></span>
+    <a href="../nail-cao-cap-phu-my-hung/" class="fl">Nail</a><span class="fs"></span>
+    <a href="../cham-da-quan-7/" class="fl">Facial</a><span class="fs"></span>
+    <a href="../spa-cao-cap-quan7/" class="fl">Body</a><span class="fs"></span>
+    <a href="../goi-dau-duong-sinh-quan7/" class="fl">Hair Wash</a><span class="fs"></span>
     <a href="https://booksalon.kiotviet.vn/Dahlia" target="_blank" class="btn-gold" style="font-size:10px;padding:10px 20px;letter-spacing:2px;">Đặt lịch</a>
   </div>
 </footer>
@@ -284,8 +311,12 @@
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
   const toggle = document.getElementById('navToggle');
   const links = document.getElementById('navLinks');
-  toggle.addEventListener('click', () => links.classList.toggle('open'));
-  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+  const backdrop = document.getElementById('navBackdrop');
+  function openMenu() { links.classList.add('open'); toggle.classList.add('open'); backdrop.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeMenu() { links.classList.remove('open'); toggle.classList.remove('open'); backdrop.classList.remove('open'); document.body.style.overflow = ''; }
+  toggle.addEventListener('click', () => links.classList.contains('open') ? closeMenu() : openMenu());
+  backdrop.addEventListener('click', closeMenu);
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
   document.querySelector('a[href="#menu"]').addEventListener('click', e => {
     e.preventDefault();
     document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
