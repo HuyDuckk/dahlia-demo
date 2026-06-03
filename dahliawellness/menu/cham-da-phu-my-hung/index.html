@@ -3,21 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nail Services — Dahlia Nail & Wellness Studio</title>
+  <title>Facial Care — Dahlia Nail & Wellness Studio</title>
+  <meta name="description" content="Facial care tại Dahlia — Chăm sóc da chuyên sâu, trị mụn, tái tạo da tại TP. Hồ Chí Minh.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://huyduckk.github.io/dahlia-demo/menu/cham-da-phu-my-hung/">
+  <meta property="og:title" content="Chăm Da Phú Mỹ Hưng — Bảng Giá Dahlia">
+  <meta property="og:description" content="Bảng giá dịch vụ chăm sóc da tại Phú Mỹ Hưng. Facial chuyên sâu, trị liệu da, làm sáng da tại Dahlia Wellness Studio.">
+  <meta property="og:image" content="https://huyduckk.github.io/dahlia-demo/face.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Dahlia Nail &amp; Wellness Studio">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://huyduckk.github.io/dahlia-demo/face.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
+      --sage: #A8C0B4;
       --navy: #1B2B4B;
-      --gold: #C9A96E;
       --dark: #0D1520;
-      --terra: #E27D6B;
+      --text: #1A2820;
+      --muted: rgba(26,40,32,0.58);
+      --gold: #C9A96E;
     }
     html { scroll-behavior: smooth; }
     @keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
-    body { font-family: 'Inter', sans-serif; color: var(--navy); background: #fff; overflow-x: hidden; animation: pageIn 0.7s cubic-bezier(0.22,1,0.36,1) both; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: #fff; overflow-x: hidden; animation: pageIn 0.7s cubic-bezier(0.22,1,0.36,1) both; }
 
     /* NAV */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0 48px; height: 130px; display: flex; align-items: center; justify-content: space-between; transition: all 0.4s; }
@@ -46,13 +59,13 @@
 
     /* HERO */
     .hero { position: relative; height: 100vh; min-height: 600px; display: flex; align-items: flex-end; overflow: hidden; }
-    .hero-bg { position: absolute; inset: 0; background-image: url('../../nail/8bd1f681bd4cf8dfefc97fed90cda445.jpg'); background-size: cover; background-position: center top; animation: zoom 14s ease-in-out infinite alternate; }
+    .hero-bg { position: absolute; inset: 0; background-image: url('../../face.jpg'); background-size: cover; background-position: center 30%; animation: zoom 14s ease-in-out infinite alternate; }
     @keyframes zoom { from { transform: scale(1.04); } to { transform: scale(1.10); } }
-    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,21,32,0.92) 0%, rgba(13,21,32,0.28) 55%, rgba(13,21,32,0.08) 100%); }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,21,32,0.9) 0%, rgba(13,21,32,0.25) 55%, rgba(13,21,32,0.06) 100%); }
     .hero-inner { position: relative; z-index: 2; padding: 0 80px 88px; }
     .eyebrow { display: inline-flex; align-items: center; gap: 12px; color: var(--gold); font-size: 10px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 16px; }
     .eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); display: block; }
-    .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(64px,9vw,110px); font-weight: 300; color: #fff; letter-spacing: 10px; text-transform: uppercase; line-height: 0.9; margin-bottom: 18px; }
+    .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(60px,8vw,100px); font-weight: 300; color: #fff; letter-spacing: 10px; text-transform: uppercase; line-height: 0.9; margin-bottom: 18px; }
     .hero-sub { font-size: 16px; font-weight: 300; font-style: italic; color: rgba(255,255,255,0.55); margin-bottom: 36px; }
     .hero-btns { display: flex; align-items: center; gap: 20px; }
     .btn-gold { background: var(--gold); color: var(--dark); padding: 14px 38px; font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; display: inline-block; transition: all 0.3s; }
@@ -61,44 +74,43 @@
     .btn-ghost:hover { color: rgba(255,255,255,0.9); }
 
     /* MENU SECTION */
-    .menu-section { background: var(--terra); }
-    .menu-layout { display: grid; grid-template-columns: 420px 1fr; }
+    .menu-section { background: var(--sage); padding: 0 80px 80px; }
 
-    .img-panel { position: sticky; top: 0; height: 100vh; overflow: hidden; align-self: start; }
-    .img-panel img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+    /* Category section */
+    .cat-section { display: grid; grid-template-columns: 220px 1fr; gap: 0 60px; padding: 52px 0; border-top: 1px solid rgba(0,0,0,0.12); }
+    .cat-section:first-of-type { padding-top: 64px; border-top: none; }
+    .cat-inner { border-left: 4px solid var(--navy); padding-left: 14px; }
+    .cat-name { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--navy); line-height: 1.2; margin-bottom: 5px; }
+    .cat-sub { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-style: italic; color: rgba(27,43,75,0.65); }
 
-    .content-panel { padding: 64px 56px 80px; }
+    /* Services grid */
+    .svc-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px; row-gap: 36px; }
+    .svc-wide { grid-column: 1 / -1; }
 
-    /* SERVICE GRID */
-    .svc-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px; row-gap: 52px; }
-    .svc-item.wide { grid-column: 1 / -1; }
-
-    /* Service header row */
-    .svc-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
-    .svc-icon { width: 26px; height: 26px; background: var(--navy); flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 3.5px; }
-    .svc-icon i { display: block; width: 14px; height: 1.5px; background: #fff; font-style: normal; }
-    .svc-name { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--navy); }
-    .svc-badge { display: inline-block; background: rgba(255,255,255,0.38); color: var(--navy); font-size: 10px; font-weight: 500; padding: 3px 11px; border-radius: 20px; white-space: nowrap; }
+    /* Service head */
+    .svc-head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+    .svc-name { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--navy); }
+    .badge { display: inline-block; background: rgba(255,255,255,0.55); color: var(--navy); font-size: 10px; font-weight: 500; font-style: italic; padding: 2px 10px; border-radius: 20px; white-space: nowrap; border: 1px solid rgba(255,255,255,0.8); }
+    .svc-subtitle { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 8px; line-height: 1.4; }
 
     /* Descriptions */
-    .dv { font-size: 13px; font-weight: 700; color: var(--navy); line-height: 1.55; margin-bottom: 4px; }
-    .de { font-size: 12px; font-weight: 400; color: rgba(27,43,75,0.65); line-height: 1.5; margin-bottom: 12px; }
+    .dv { font-size: 13px; font-weight: 700; color: var(--text); line-height: 1.6; margin-bottom: 4px; }
+    .de { font-size: 12px; font-weight: 400; color: var(--muted); line-height: 1.55; margin-bottom: 10px; }
 
-    /* Price lines */
-    .prices { display: flex; flex-direction: column; gap: 4px; }
-    .pr { display: flex; align-items: baseline; gap: 10px; }
-    .pa { font-size: 14px; font-weight: 700; color: var(--navy); }
-    .pl { font-size: 12px; font-style: italic; font-weight: 400; color: rgba(27,43,75,0.58); }
+    /* Price + time */
+    .pr { display: flex; align-items: baseline; gap: 14px; }
+    .pa { font-size: 14px; font-weight: 700; color: var(--text); }
+    .pt { font-size: 12px; font-style: italic; color: var(--muted); }
 
-    /* TRANG TRÍ addon grid */
-    .addon-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 40px; row-gap: 20px; margin-top: 4px; }
-    .addon-row { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 3px; }
-    .addon-sq { width: 8px; height: 8px; background: var(--navy); flex-shrink: 0; margin-top: 4px; }
-    .addon-vn { font-size: 13px; font-weight: 700; color: var(--navy); line-height: 1.4; }
-    .addon-en { font-size: 12px; font-weight: 400; color: rgba(27,43,75,0.65); line-height: 1.4; margin: 3px 0 5px 16px; }
-    .addon-pr { display: flex; align-items: baseline; gap: 8px; margin-left: 16px; }
-    .addon-pa { font-size: 14px; font-weight: 700; color: var(--navy); }
-    .addon-pl { font-size: 12px; font-style: italic; color: rgba(27,43,75,0.58); }
+    /* Expert Lab peel sub-items */
+    .peel-list { display: flex; flex-direction: column; gap: 28px; margin-top: 8px; }
+    .peel-2col { display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px; }
+    .peel-icon { font-size: 10px; color: var(--navy); margin-bottom: 6px; }
+    .peel-vn { font-size: 13px; font-weight: 700; color: var(--text); line-height: 1.6; margin-bottom: 4px; }
+    .peel-en { font-size: 12px; font-weight: 400; color: var(--muted); line-height: 1.5; margin-bottom: 8px; }
+
+    /* Booking CTA */
+    .book-cta { text-align: center; padding: 48px 0 0; }
 
     /* FOOTER */
     footer { background: #0D1520; padding: 72px 0 0; }
@@ -122,9 +134,10 @@
 
     /* MOBILE */
     @media (max-width: 1024px) {
-      .menu-layout { grid-template-columns: 300px 1fr; }
-      .content-panel { padding: 48px 36px 60px; }
-      .svc-grid { column-gap: 32px; row-gap: 40px; }
+      .menu-section { padding: 0 48px 64px; }
+      .cat-section { grid-template-columns: 180px 1fr; gap: 0 40px; }
+      .svc-grid { column-gap: 32px; }
+      .peel-2col { column-gap: 32px; }
     }
     @media (max-width: 768px) {
       nav { padding: 0 24px; }
@@ -147,13 +160,13 @@
       .nav-links .nav-cta { margin-top: 24px; text-align: center; padding: 16px 24px !important; display: block; }
       .nav-divider { display: none; }
       .hero-inner { padding: 0 24px 64px; }
-      .hero-title { font-size: 56px; }
-      .menu-layout { grid-template-columns: 1fr; }
-      .img-panel { position: relative; height: 280px; }
-      .content-panel { padding: 40px 24px 56px; }
+      .hero-title { font-size: 52px; }
+      .menu-section { padding: 0 24px 56px; }
+      .top-photo img { height: 240px; }
+      .cat-section { grid-template-columns: 1fr; gap: 20px 0; }
       .svc-grid { grid-template-columns: 1fr; }
-      .svc-item.wide { grid-column: 1; }
-      .addon-grid { grid-template-columns: 1fr; }
+      .svc-wide { grid-column: 1; }
+      .peel-2col { grid-template-columns: 1fr; gap: 24px; }
     }
 
     /* Floating contact buttons */
@@ -174,8 +187,8 @@
   <ul class="nav-links" id="navLinks">
     <li><a href="../../">Trang chủ</a></li>
     <li class="nav-divider"></li>
-    <li><a href="../nail-cao-cap-phu-my-hung/" class="active">Nail Services</a></li>
-    <li><a href="../cham-da-phu-my-hung/">Facial Care</a></li>
+    <li><a href="../nail-cao-cap-phu-my-hung/">Nail Services</a></li>
+    <li><a href="../cham-da-phu-my-hung/" class="active">Facial Care</a></li>
     <li><a href="../spa-cao-cap-quan7/">Body Massage</a></li>
     <li><a href="../goi-dau-duong-sinh-quan7/">Head Spa</a></li>
     <li class="nav-divider"></li>
@@ -190,9 +203,9 @@
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-inner">
-    <div class="eyebrow">Nail Services</div>
-    <h1 class="hero-title">Nail Deluxe</h1>
-    <p class="hero-sub">Từ những bộ móng gel tối giản hằng ngày đến GelX, BIAB hay gel thuần chay, Dahlia theo đuổi vẻ đẹp tinh tế, tự nhiên và bền vững. Đội ngũ KTV tỉ mỉ, tập trung vào form móng, độ bền và cảm giác thoải mái khi sử dụng, với các dòng gel an toàn, chính hãng từ thương hiệu quốc tế — trong không gian boutique nhẹ nhàng giữa lòng Phú Mỹ Hưng, Quận 7.</p>
+    <div class="eyebrow">Facial Care</div>
+    <h1 class="hero-title">Facial Menu</h1>
+    <p class="hero-sub">Dahlia mang đến trải nghiệm chăm da khoa học, không xâm lấn tại Phú Mỹ Hưng, kết hợp dược mỹ phẩm chính hãng và quy trình facial cá nhân hoá. Từ detox da, làm sạch bít tắc, kiểm soát mụn đến phục hồi hàng rào bảo vệ và trẻ hoá da chuyên sâu, mỗi liệu trình đều hướng đến làn da ổn định, khỏe hơn theo thời gian.</p>
     <div class="hero-btns">
       <a href="#menu" class="btn-gold">Xem bảng giá</a>
       <a href="../../" class="btn-ghost">← Trang chủ</a>
@@ -202,200 +215,159 @@
 
 <section class="menu-section" id="menu">
 
-  <!-- PART 1: Palette photo + 6 services -->
-  <div class="menu-layout">
-    <div class="img-panel">
-      <img src="../../nail/8bd1f681bd4cf8dfefc97fed90cda445.jpg" alt="Bảng màu nail tại Dahlia">
+  <!-- ── QUẢN TRỊ MỤN ── -->
+  <div class="cat-section">
+    <div class="cat-inner">
+      <p class="cat-name">Quản trị mụn</p>
+      <p class="cat-sub">Clinical acne care</p>
     </div>
-    <div class="content-panel">
-      <div class="svc-grid">
+    <div class="svc-grid">
 
-        <!-- LÀM SẠCH CƠ BẢN -->
-        <div class="svc-item">
-          <div class="svc-head">
-            <div class="svc-icon"><i></i><i></i><i></i></div>
-            <span class="svc-name">Làm sạch cơ bản</span>
-            <span class="svc-badge">Basic mani/pedicure</span>
-          </div>
-          <p class="dv">Tháo sơn cũ (nếu có), làm sạch viền da, dũa phom & dưỡng móng.</p>
-          <p class="de">Polish removal (if any), cuticle care, shaping. Nourish with cuticle oil & lotion.</p>
-          <div class="prices">
-            <div class="pr"><span class="pa">165.000đ</span><span class="pl">Tay / Manicure</span></div>
-            <div class="pr"><span class="pa">185.000đ</span><span class="pl">Chân / Pedicure</span></div>
-            <div class="pr"><span class="pa">300.000đ</span><span class="pl">Tay + Chân / Mani + Pedicure</span></div>
-          </div>
+      <div class="svc-wide">
+        <div class="svc-head">
+          <span class="svc-name">Da mụn cơ bản</span>
+          <span class="badge">Basic Acne</span>
         </div>
-
-        <!-- SƠN GEL -->
-        <div class="svc-item">
-          <div class="svc-head">
-            <div class="svc-icon"><i></i><i></i><i></i></div>
-            <span class="svc-name">Sơn gel</span>
-            <span class="svc-badge">Gel polish</span>
-          </div>
-          <p class="dv">Tháo sơn cũ (nếu có), làm sạch viền da, dũa phom, sơn gel & dưỡng móng.</p>
-          <p class="de">Polish removal (if any), cuticle care, nail shaping, gel polish application. Cuticle oil & lotion.</p>
-          <div class="prices">
-            <div class="pr"><span class="pa">418.000đ</span><span class="pl">Tay / Gel Manicure</span></div>
-            <div class="pr"><span class="pa">440.000đ</span><span class="pl">Chân / Gel Pedicure</span></div>
-            <div class="pr"><span class="pa">748.000đ</span><span class="pl">Tay + Chân / Gel Mani + Pedicure</span></div>
-          </div>
-        </div>
-
-        <!-- SƠN THƯỜNG -->
-        <div class="svc-item">
-          <div class="svc-head">
-            <div class="svc-icon"><i></i><i></i><i></i></div>
-            <span class="svc-name">Sơn thường</span>
-            <span class="svc-badge">Regular polish</span>
-          </div>
-          <p class="dv">Tháo sơn cũ (nếu có), làm sạch viền da, dũa phom, sơn thường & dưỡng móng.</p>
-          <p class="de">Polish removal (if any), cuticle care, nail shaping, regular polish. Cuticle oil & lotion.</p>
-          <div class="prices">
-            <div class="pr"><span class="pa">300.000đ</span><span class="pl">Bộ /Set</span></div>
-          </div>
-        </div>
-
-        <!-- EM BÉ -->
-        <div class="svc-item">
-          <div class="svc-head">
-            <div class="svc-icon"><i></i><i></i><i></i></div>
-            <span class="svc-name">Em bé</span>
-            <span class="svc-badge">Kids package</span>
-          </div>
-          <p class="dv">Dành cho bé 4-7 tuổi. Làm sạch nhẹ nhàng, sơn thường hoặc sơn gel + tối đa 5 stickers.</p>
-          <p class="de">Kid hand/foot care (4-7 yrs old). Gentle cuticle care, gel or regular polish. Free max 5 stickers.</p>
-          <div class="prices">
-            <div class="pr"><span class="pa">180.000đ</span><span class="pl">Bộ /Set</span></div>
-          </div>
-        </div>
-
-        <!-- ĐẮP NỐI X-GEL -->
-        <div class="svc-item">
-          <div class="svc-head">
-            <div class="svc-icon"><i></i><i></i><i></i></div>
-            <span class="svc-name">Đắp nối X-Gel</span>
-            <span class="svc-badge">GelX Extension</span>
-          </div>
-          <p class="dv">100% bằng soft gel, không dùng móng nhựa và keo. Bền & tự nhiên.</p>
-          <p class="de">100% soft gel, lighter feeling, durable and "your nail but better" look.</p>
-          <div class="prices">
-            <div class="pr"><span class="pa">440.000đ</span><span class="pl">Chỉ sơn top/ No color, only top gel</span></div>
-            <div class="pr"><span class="pa">780.000đ</span><span class="pl">Kèm sơn gel/ With gel color</span></div>
-          </div>
-        </div>
-
-        <!-- BIAB -->
-        <div class="svc-item">
-          <div class="svc-head">
-            <div class="svc-icon"><i></i><i></i><i></i></div>
-            <span class="svc-name">BIAB</span>
-            <span class="svc-badge">Builder in a bottle</span>
-          </div>
-          <p class="dv">Độc quyền, thuần chay từ The Gel Bottle vừa tạo hình vừa nuôi dưỡng móng</p>
-          <p class="de">Exclusive & vegan from The Gel Bottle — strengthens and shapes your nails</p>
-          <div class="prices">
-            <div class="pr"><span class="pa">748.000đ</span><span class="pl">Bộ/set</span></div>
-          </div>
-        </div>
-
+        <p class="dv">Làm sạch nhân mụn chuẩn y khoa, điện di tinh chất ZnPCA & HA giúp kháng viêm, kiếm dầu và đắp mặt nạ làm dịu.</p>
+        <p class="de">For skin with blackheads and hidden acne. It includes medically-approved acne extraction and restores moisture to the skin with ZnPCA & HA serum</p>
+        <div class="pr"><span class="pa">580.000đ</span><span class="pt">60 phút/mins</span></div>
       </div>
+
+      <div>
+        <div class="svc-head"><span class="badge">ProAcne Balancing Peel</span></div>
+        <p class="svc-subtitle">Mụn viêm, nền da yếu & dễ kích ứng</p>
+        <p class="dv">Peel cho da mụn nhạy cảm: làm sạch nhân mụn chuẩn y khoa, giảm viêm sưng, điều tiết nhờn và hạn chế thâm mụn với 5% Azelaic Acid & 2% Salicylic Acid. Các buổi cách nhau 10-14 ngày, nên xen kẽ Skin Comfort.</p>
+        <p class="de">A gentle peel for sensitive, inflamed acne skin: medical-approved extraction, oil control, soothing inflammation, and reducing post-inflammatory hyperpigmentation with 5% Azelaic Acid & 2% Salicylic Acid.</p>
+        <div class="pr"><span class="pa">1.000.000đ</span><span class="pt">60 phút/mins</span></div>
+      </div>
+
+      <div>
+        <div class="svc-head"><span class="badge">ProAcne Clear S-25 Peel</span></div>
+        <p class="svc-subtitle">Mụn viêm, dầu thừa & lỗ chân lông to</p>
+        <p class="dv">Liệu trình peel Salicylic 25% giúp điều tiết bã nhờn, tiêu sừng mạnh mẽ, làm mịn kết cấu da, thu nhỏ lỗ chân lông; đều màu da và hạn chế vết thâm. Các buổi cách nhau 14-21 ngày, nên xen kẽ Crystal skin.</p>
+        <p class="de">Salicylic Acid 25% Peel controls sebum, smooths skin texture, minimizes pores, and restores a clearer, more even complexion.</p>
+        <div class="pr"><span class="pa">1.200.000đ</span><span class="pt">60 phút/mins</span></div>
+      </div>
+
     </div>
   </div>
 
-  <!-- PART 2: Nail tech photo + 4 services -->
-  <div class="menu-layout">
-    <div class="img-panel">
-      <img src="../../nail/64311ef7c77b1e4bf4944ba5ea36ccfb.jpg" alt="Kỹ thuật viên nail tại Dahlia">
+  <!-- ── CHUYÊN SÂU ── -->
+  <div class="cat-section">
+    <div class="cat-inner">
+      <p class="cat-name">Chuyên sâu</p>
+      <p class="cat-sub">Revitalization</p>
     </div>
-    <div class="content-panel">
-      <div class="svc-grid">
+    <div class="svc-grid">
 
-        <!-- ĐẮP CLEAR GEL -->
-        <div class="svc-item">
-          <div class="svc-head">
-            <div class="svc-icon"><i></i><i></i><i></i></div>
-            <span class="svc-name">Đắp Clear Gel</span>
-            <span class="svc-badge">Builder gel overlay</span>
-          </div>
-          <p class="dv">Thêm độ dày & sức mạnh cho móng quá mỏng, yếu hoặc móng bị quặp.</p>
-          <p class="de">Adds thickness and strength to nails that are too thin, weak, or inward-curving</p>
-          <div class="prices">
-            <div class="pr"><span class="pa">550.000đ</span><span class="pl">Bộ/set</span></div>
-          </div>
-        </div>
-
-        <!-- REFILL MÓNG ĐẮP NỐI -->
-        <div class="svc-item">
-          <div class="svc-head">
-            <div class="svc-icon"><i></i><i></i><i></i></div>
-            <span class="svc-name">Refill Móng Đắp Nối</span>
-            <span class="svc-badge">Extension refill</span>
-          </div>
-          <p class="dv">Chỉ áp dụng khi móng mọc không quá 20% để đạt chất lượng tốt nhất.</p>
-          <p class="de">Only applied when nail growth less than 20% for the best result.</p>
-          <div class="prices">
-            <div class="pr"><span class="pa">330.000đ</span><span class="pl">Bộ/set</span></div>
-          </div>
-        </div>
-
-        <!-- TRANG TRÍ -->
-        <div class="svc-item wide">
-          <div class="svc-head">
-            <div class="svc-icon"><i></i><i></i><i></i></div>
-            <span class="svc-name">Trang trí</span>
-            <span class="svc-badge">Add-ons</span>
-          </div>
-          <div class="addon-grid">
-            <div class="addon-item">
-              <div class="addon-row"><span class="addon-sq"></span><span class="addon-vn">Vẽ cơ bản (mắt mèo, french, tráng gương...)</span></div>
-              <p class="addon-en">Basic art (magnetic, french, mirror powder,...)</p>
-              <div class="addon-pr"><span class="addon-pa">15.000 - 20.000đ</span><span class="addon-pl">móng/piece</span></div>
-            </div>
-            <div class="addon-item">
-              <div class="addon-row"><span class="addon-sq"></span><span class="addon-vn">Vẽ nâng cao (cần từ 2 kỹ thuật art trở lên...)</span></div>
-              <p class="addon-en">Advance art (Includes 2 or more art techniques combined)</p>
-              <div class="addon-pr"><span class="addon-pa">30.000 - 200.000đ</span><span class="addon-pl">móng/piece</span></div>
-            </div>
-            <div class="addon-item">
-              <div class="addon-row"><span class="addon-sq"></span><span class="addon-vn">Phụ kiện cơ bản (sticker, đá nhỏ,...)</span></div>
-              <p class="addon-en">Basic accessories (sticker, ...)</p>
-              <div class="addon-pr"><span class="addon-pa">20.000 - 40.000đ</span><span class="addon-pl">móng/piece</span></div>
-            </div>
-            <div class="addon-item">
-              <div class="addon-row"><span class="addon-sq"></span><span class="addon-vn">Phụ kiện cao cấp (đá lớn, nhiều đá,...)</span></div>
-              <p class="addon-en">Premium accessories (rhinestone,...)</p>
-              <div class="addon-pr"><span class="addon-pa">50.000 - 200.000đ</span><span class="addon-pl">móng/piece</span></div>
-            </div>
-            <div class="addon-item">
-              <div class="addon-row"><span class="addon-sq"></span><span class="addon-vn">Sơn thuần chay The Gel Bottle</span></div>
-              <p class="addon-en">The Gel Bottle Vegan polish</p>
-              <div class="addon-pr"><span class="addon-pa">+160.000đ</span><span class="addon-pl">Bộ/set</span></div>
-            </div>
-            <div class="addon-item">
-              <div class="addon-row"><span class="addon-sq"></span><span class="addon-vn">Sơn cứng móng X-Gel</span></div>
-              <p class="addon-en">GelX strengthening layers</p>
-              <div class="addon-pr"><span class="addon-pa">+200.000đ</span><span class="addon-pl">Bộ/set</span></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- CHĂM SÓC GÓT CHÂN -->
-        <div class="svc-item wide">
-          <div class="svc-head">
-            <div class="svc-icon"><i></i><i></i><i></i></div>
-            <span class="svc-name">Chăm sóc gót chân</span>
-            <span class="svc-badge">Heel therapy</span>
-          </div>
-          <p class="dv">Ngâm chân thư giãn cùng muối ẩm & tinh dầu. Ủ mềm & chà gót, tẩy da chết chân. Dưỡng ẩm.</p>
-          <p class="de">A relaxing foot soak, callus removal. Foot scrub & lotion.</p>
-          <div class="prices">
-            <div class="pr"><span class="pa">365.000đ</span></div>
-          </div>
-        </div>
-
+      <div>
+        <div class="svc-head"><span class="badge">Crystal Skin</span></div>
+        <p class="svc-subtitle">Tinh khiết, sạch sâu</p>
+        <p class="dv">Thiết kế cho làn da dầu nhờn, mụn ẩn dưới da — lấy sạch sợi bã nhờn, xử lý nhân mụn ẩn, cấp ẩm phục hồi bằng serum HA đa phân tử; phục hồi hàng rào bảo vệ da.</p>
+        <p class="de">An intensive treatment for oily skin and hidden acne: Clears excess sebum and hidden acne, hydrates with multi-molecular HA serum, and restores the skin barrier.</p>
+        <div class="pr"><span class="pa">700.000đ</span><span class="pt">60 phút/mins</span></div>
       </div>
+
+      <div>
+        <div class="svc-head"><span class="badge">Glowing Skin</span></div>
+        <p class="svc-subtitle">Rạng ngời, thư thái</p>
+        <p class="dv">Phù hợp với nền da thường, khô; với tinh chất arbutin & kỹ thuật massage dẫn lưu hệ bạch huyết độc quyền, giúp đào thải độc tố, nâng cơ, cho sắc da rạng ngời.</p>
+        <p class="de">An intensive treatment for normal to dry skin using arbutin serum, combined with our exclusive lymphatic drainage massage technique. It detoxifies, firms, and enhances elasticity, leaving your skin radiant and glowing.</p>
+        <div class="pr"><span class="pa">800.000đ</span><span class="pt">60 phút/mins</span></div>
+      </div>
+
+      <div>
+        <div class="svc-head"><span class="badge">Skin Comfort (post-peel)</span></div>
+        <p class="svc-subtitle">Phục hồi, dịu da</p>
+        <p class="dv">Phù hợp da sau peel, da đang kích ứng, da cháy nắng. Làm dịu cảm giác khô căng/rát, dịu phản ứng viêm dưới da, phục hồi sinh lý của lớp biểu bì. Nên làm 5-7 ngày sau peel.</p>
+        <p class="de">Perfect for post-peel, sensitive, or sunburned skin. Instantly calming heat and inflammation while helping your skin recover & regain its natural softness</p>
+        <div class="pr"><span class="pa">670.000đ</span><span class="pt">45 phút/mins</span></div>
+      </div>
+
+      <div>
+        <div class="svc-head"><span class="badge">Aqua Purity</span></div>
+        <p class="svc-subtitle">Trong veo, căng bóng</p>
+        <p class="dv">Sử dụng công nghệ thuỷ lực và AHA/BHA nồng độ thấp, kết hợp Oxy Jet giúp làm sạch bã nhờn, mụn đầu đen, mụn ẩn; dưỡng sâu tức thì, cho nền da sạch trong, căng bóng.</p>
+        <p class="de">A deep cleansing treatment that uses hydro-jet, combined with AHA/BHA to remove clogged sebum and impurities, leaving the skin smooth, clear, and hydrated. For all skin types</p>
+        <div class="pr"><span class="pa">980.000đ</span><span class="pt">75 phút/mins</span></div>
+      </div>
+
+      <div>
+        <div class="svc-head"><span class="badge">For Men energy facial</span></div>
+        <p class="svc-subtitle">Chăm da cho CHÀNG</p>
+        <p class="dv">Dành riêng cho "phái mạnh", tập trung vào các vấn đề thường gặp ở nam giới (do cơ địa & cạo râu), làm sạch sâu, loại bỏ mụn cám, cân bằng hoạt động tuyến dầu thừa, làm mịn da.</p>
+        <p class="de">Designed specifically to meet the needs of men's skin that often irritated by the daily ritual of shaving. This facial therapy deep cleanses, regulates oil production and improve skin texture for him.</p>
+        <div class="pr"><span class="pa">860.000đ</span><span class="pt">70 phút/mins</span></div>
+      </div>
+
     </div>
+  </div>
+
+  <!-- ── TÁI TẠO ── -->
+  <div class="cat-section">
+    <div class="cat-inner">
+      <p class="cat-name">Tái tạo</p>
+      <p class="cat-sub">Renewal & Restoration</p>
+    </div>
+    <div class="svc-grid">
+
+      <!-- Expert Lab — full width -->
+      <div class="svc-wide">
+        <div class="svc-head" style="margin-bottom:20px;">
+          <span class="badge">Expert Lab Chemical peel by Germaine</span>
+          <span class="svc-name">Peel da trẻ hoá Expert Lab</span>
+        </div>
+        <div class="peel-2col">
+
+          <div>
+            <p class="peel-icon">▲</p>
+            <p class="peel-vn"><strong>Flash Peel:</strong> Peel dịu nhẹ, cải thiện kết cấu da, đều màu da, cải thiện thâm sau mụn, cho làn da luôn tươi mới; với Mandelic Acid (5%), Lactobionic Acid (5%). Các buổi cách nhau 7-10 ngày</p>
+            <p class="peel-en">The Flash peel, with 5% Mandelic Acid and 5% Lactobionic Acid exfoliates, evens skin tone, and keeps the skin fresh. Can be used every 7-10 days</p>
+            <div class="pr"><span class="pa">1.100.000đ</span><span class="pt">60 phút/mins</span></div>
+          </div>
+
+          <div>
+            <p class="peel-icon">▲</p>
+            <p class="peel-vn"><strong>P-40 Firm &amp; Glow:</strong> Pyruvic Acid 40% + Lactic Acid 5% đi sâu, kích thích tăng sinh collagen, làm mờ nếp nhăn, tái tạo cấu trúc da, dưỡng ẩm và làm sáng. Các buổi cách nhau 14-21 ngày.</p>
+            <p class="peel-en">The P-40 Firm &amp; Glow Peel, with 40% Pyruvic Acid &amp; 5% Lactic Acid penetrates deeply to boost collagen, smooth wrinkles, restructure the skin, hydrate and brighten the complexion. Can be used every 14-21 days.</p>
+            <div class="pr"><span class="pa">1.725.000đ</span><span class="pt">60 phút/mins</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div>
+        <div class="svc-head"><span class="badge">O2 Glow Reset by Germaine</span></div>
+        <p class="svc-subtitle" style="text-transform:uppercase;letter-spacing:0.5px;font-size:12px;">Thanh lọc da cấp độ tế bào</p>
+        <p class="dv">Liệu trình thanh lọc da với oxy tươi thẩm thấu sâu, giúp tăng cường miễn dịch, chống ô nhiễm và thúc đẩy tái tạo sinh học. 98% khách hàng cảm nhận da thanh sạch & khoẻ hơn sau liệu trình.</p>
+        <p class="de">This award-winning facial by Germaine protects and repairs the skin against pollution and stress. A unique bubble mask infuses oxygen to detoxify cells while another mask strengthens the skin's immune defense. 98% experienced clearer, healthier, more radiant skin</p>
+        <div class="pr"><span class="pa">2.100.000đ</span><span class="pt">80 phút/mins</span></div>
+      </div>
+
+      <div>
+        <div class="svc-head">
+          <span class="svc-name">Trẻ hoá và tái tạo với peptide</span>
+          <span class="badge">NUANCE Smooth by Christina</span>
+          <span class="badge" style="background:var(--gold);color:#fff;font-style:normal;font-weight:700;border-color:var(--gold);">NEW</span>
+        </div>
+        <p class="dv">Liệu trình chuyên biệt kết hợp peptide sinh học và công nghệ vi phân tử thẩm thấu sâu, kích hoạt quá trình tái tạo tế bào, xóa mờ nếp nhăn và phục hồi độ đàn hồi da.</p>
+        <p class="de">A specialized treatment combining bioactive peptides and micro-molecular technology that deeply penetrates to activate cellular regeneration, smooth fine lines, and restore skin elasticity.</p>
+        <div class="pr"><span class="pa">1.800.000đ</span><span class="pt">70 phút/mins</span></div>
+      </div>
+
+      <div>
+        <div class="svc-head"><span class="badge">The TimeExpert Hydra Bliss</span></div>
+        <p class="svc-subtitle">Cấp Ẩm Sâu &amp; Guasha Mát Lạnh</p>
+        <p class="dv">Liệu trình cấp nước tăng sâu từ Germaine, kết hợp guasha lạnh thư giãn, mang lại hiệu ứng căng mọng và săn chắc cho da khô & lão hoá.</p>
+        <p class="de">An advanced hydrating treatment from Germaine with deep moisture infusion and cooling guasha massage, delivering plumped, firm, and radiant skin.</p>
+        <div class="pr"><span class="pa">2.200.000đ</span><span class="pt">80 phút/mins</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="book-cta">
+    <a href="https://booksalon.kiotviet.vn/Dahlia" target="_blank" class="btn-gold">Đặt lịch ngay →</a>
   </div>
 
 </section>
